@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# Takes a list of ids `$1` and a single id `$2`.
+# Returns the next id from the list, or the first oneif `$2`is last.
+
+if [[ -z $1 ]] || [[ -z $2 ]]; then
+  # There are no ids
+  exit 1
+else
+  ids="$1"
+  single_id="$2"
+  if [[ $ids == *"$single_id"* ]]; then
+    # Focus next - split the ids string by the single_id id and take the first following
+    next_window=$( echo $ids | sed s/.*"$single_id"// | awk '{print $1}' )
+    if [[ -z $next_window ]]; then
+      # $single_id is at the ond, or the only one matching the argument
+      target_id=$( echo $ids | awk '{print $1}' )
+    else
+      target_id=$next_window
+    fi
+  else
+    # Focus first
+    target_id=${ids[0]}
+  fi
+  echo $target_id
+fi

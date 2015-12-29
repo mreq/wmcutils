@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# Focuses window by matching argument
+# Focuses window by matching argument across all workspaces
 # If a matching window is active, cycles through others matching
 
-window_ids=$( wmc_get_windows "$1" )
+window_ids=$( wmc_get_all_windows "$1" )
 if [[ -z $window_ids ]]; then
   # There's no matching id
   exit 1
