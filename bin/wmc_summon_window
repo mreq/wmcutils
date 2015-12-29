@@ -16,5 +16,6 @@ else
     exit 1
   else
     wmctrl -iR "$target_id"
+    echo "$target_id"
   fi
 fi

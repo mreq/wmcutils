@@ -4,6 +4,8 @@
 # If a matching window is active, cycles through others matching
 # If no matching window is found, run the command
 
-if ! wmc_focus_window "$1"; then
+if wmc_focus_window "$1"; then
+  echo "$1"
+else
   eval "$2"
 fi

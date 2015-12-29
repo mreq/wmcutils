@@ -22,5 +22,5 @@ else
     # Focus first
     target_id=${ids[0]}
   fi
-  echo $target_id
+  echo "$target_id"
 fi
