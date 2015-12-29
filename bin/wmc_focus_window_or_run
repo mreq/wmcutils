@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Focuses window by matching argument
+# If a matching window is active, cycles through others matching
+# If no matching window is found, run the command
+
+if ! wmc_focus_window "$1"; then
+  eval "$2"
+fi

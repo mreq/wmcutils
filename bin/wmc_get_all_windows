@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Returns ids of windows matching the argument from all workspaces
+# When there's no argument, returns all ids
+
+wmctrl -lx | grep "$*" | awk '{print $1}'

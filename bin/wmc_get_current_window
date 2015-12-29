@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Returns the id of the current window
+
+echo "0x0$( xprop -root | grep '^_NET_ACTIVE_WINDOW' | awk -F'# 0x' '{print $2}' | awk -F', ' '{print $1}' )"

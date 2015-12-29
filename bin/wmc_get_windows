@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Returns ids of windows matching the argument from the current workspace
+# When there's no argument, returns all ids
+
+wmctrl -lx | grep -E "^\w+\s+$( wmc_get_current_workspace )\s+" | grep "$*" | awk '{print $1}'

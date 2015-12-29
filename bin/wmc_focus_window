@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Focuses window by matching argument
+# If a matching window is active, cycles through others matching
+
+window_ids=$( wmc_get_windows "$1" )
+if [[ -z $window_ids ]]; then
+  # There's no matching id
+  exit 1
+else
+  # There are matching ids
+  current_window=$( wmc_get_current_window )
+
+  if [[ $window_ids == *"$current_window"* ]]; then
+    # Focus next - split the ids string by the current_window id and take the first following
+    next_window=$( echo $window_ids | sed s/.*"$current_window"// | awk '{print $1}' )
+    if [[ -z $next_window ]]; then
+      # $current_window is at the ond, or the only one matching the argument
+      target_id=$( echo $window_ids | awk '{print $1}' )
+    else
+      target_id=$next_window
+    fi
+  else
+    # Focus first
+    target_id=${window_ids[0]}
+  fi
+
+  wmctrl -iR "$target_id"
+fi
