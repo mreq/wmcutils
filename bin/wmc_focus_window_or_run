@@ -7,5 +7,5 @@
 if wmc_focus_window "$1"; then
   echo "$1"
 else
-  eval "$2"
+  sh -c "$2"
 fi

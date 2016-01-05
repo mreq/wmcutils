@@ -2,7 +2,7 @@
 poor man's wmutils for EWMH compliant WM
 
 ## Requirements
-wmutils requires `wmctrl` and `x11-utils`
+wmutils requires `wmctrl x11-utils gawk`
 
 ## Instalation
 1. Clone this repository
